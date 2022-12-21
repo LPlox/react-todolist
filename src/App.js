@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddTask from "./components/AddTask";
 import Date from "./components/Date";
 import Tasks from "./components/Tasks";
 import "./styles/style.css";
@@ -75,11 +76,16 @@ const App = () => {
     );
   };
 
+  const createTask = (newTask) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+  };
+
   return (
     <div className="App">
       <section>
         <Date />
         <Tasks tasks={tasks} handleCheck={handleCheck} />
+        <AddTask taskLen={tasks.length} createTask={createTask} />
       </section>
     </div>
   );
