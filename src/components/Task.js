@@ -1,4 +1,4 @@
-const Task = ({ task, handleCheck }) => {
+const Task = ({ task, handleCheck, activateEditTask }) => {
   return (
     <li>
       <input
@@ -10,6 +10,7 @@ const Task = ({ task, handleCheck }) => {
       />
       <h3>{task.text}</h3>
       <p>{task.category}</p>
+      <button onClick={() => activateEditTask(task.id)}>...</button>
     </li>
   );
 };

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Date from "./components/Date";
 import Tasks from "./components/Tasks";
+import EditTask from "./components/EditTask";
 import "./styles/style.css";
 
 const App = () => {
@@ -67,6 +68,15 @@ const App = () => {
       completed: true,
     },
   ]);
+  const [editTask, setEditTask] = useState([]);
+
+  useEffect(() => {
+    //fetch first time here
+  }, []);
+
+  useEffect(() => {
+    //Add the changes to firebase
+  }, [tasks]);
 
   const handleCheck = (id) => {
     setTasks(
@@ -80,12 +90,39 @@ const App = () => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  const activateEditTask = (id) => {
+    setEditTask(tasks.filter((arr) => arr.id === id));
+  };
+
+  const replaceTask = (editedTask) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === editedTask.id ? editedTask : task))
+    );
+    setEditTask([]);
+  };
+
+  const deleteTask = (id) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+    setEditTask([]);
+  };
+
   return (
     <div className="App">
       <section>
         <Date />
-        <Tasks tasks={tasks} handleCheck={handleCheck} />
+        <Tasks
+          tasks={tasks}
+          handleCheck={handleCheck}
+          activateEditTask={activateEditTask}
+        />
         <AddTask taskLen={tasks.length} createTask={createTask} />
+        {editTask.length > 0 && (
+          <EditTask
+            editTask={editTask}
+            replaceTask={replaceTask}
+            deleteTask={deleteTask}
+          />
+        )}
       </section>
     </div>
   );
