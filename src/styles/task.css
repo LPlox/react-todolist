@@ -1,0 +1,87 @@
+.task {
+  margin: 10px 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.task-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.task input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 2px 16px 0 0;
+  font: inherit;
+  color: var(--light-light-gray);
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--light-light-gray);
+  border-radius: 6px;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  background: linear-gradient(180deg, #fcfcfc 0%, #f8f8f8 100%);
+}
+
+.task input[type="checkbox"]::before {
+  content: url("../assets/svgs/Checkmark.svg");
+  transform: scale(0);
+  transform-origin: center;
+  transition: 120ms transform ease-in-out;
+}
+
+.task input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.task input[type="checkbox"]:focus {
+  border: 2px solid var(--light-primary-dark);
+}
+
+.task-body h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--light-primary-dark);
+}
+
+.task-body p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--light-disable-dark);
+}
+
+.task-body.completed h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--light-disable-dark);
+}
+
+/* Resetting the button default styling */
+.task .edit {
+  border: none;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.task .edit::before {
+  content: url("../assets/svgs/edit.svg");
+  position: absolute;
+  top: -5px;
+  left: -3px;
+}

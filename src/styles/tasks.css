@@ -1,0 +1,13 @@
+.tasks h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--light-primary-dark);
+}
+
+/* Resetting css for unordered list */
+.tasks-list {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddTask from "./components/AddTask";
 import Date from "./components/Date";
+import Count from "./components/Count";
 import Tasks from "./components/Tasks";
 import EditTask from "./components/EditTask";
 import "./styles/style.css";
@@ -70,14 +71,6 @@ const App = () => {
   ]);
   const [editTask, setEditTask] = useState([]);
 
-  useEffect(() => {
-    //fetch first time here
-  }, []);
-
-  useEffect(() => {
-    //Add the changes to firebase
-  }, [tasks]);
-
   const handleCheck = (id) => {
     setTasks(
       tasks.map((task) =>
@@ -107,24 +100,25 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <section>
+    <main>
+      <header>
         <Date />
-        <Tasks
-          tasks={tasks}
-          handleCheck={handleCheck}
-          activateEditTask={activateEditTask}
+        <Count tasks={tasks} />
+      </header>
+      <Tasks
+        tasks={tasks}
+        handleCheck={handleCheck}
+        activateEditTask={activateEditTask}
+      />
+      <AddTask taskLen={tasks.length} createTask={createTask} />
+      {editTask.length > 0 && (
+        <EditTask
+          editTask={editTask}
+          replaceTask={replaceTask}
+          deleteTask={deleteTask}
         />
-        <AddTask taskLen={tasks.length} createTask={createTask} />
-        {editTask.length > 0 && (
-          <EditTask
-            editTask={editTask}
-            replaceTask={replaceTask}
-            deleteTask={deleteTask}
-          />
-        )}
-      </section>
-    </div>
+      )}
+    </main>
   );
 };
 
