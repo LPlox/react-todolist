@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/date.css";
 
 const Date = () => {
@@ -17,19 +17,29 @@ const Date = () => {
     "December",
   ];
 
-  const [date, setDate] = useState(new window.Date());
+  const [date, setDate] = useState();
+  const checkDateRef = useRef();
 
   useEffect(() => {
-    let timer = setInterval(() => setDate(new window.Date()), 1000);
+    let time = new window.Date();
+    setDate(
+      `${monthNames[time.getMonth()]} ${time.getDate()}, ${time.getFullYear()}`
+    );
+
+    let timer = setInterval(() => {
+      checkDateRef.current = `${
+        monthNames[time.getMonth()]
+      } ${time.getDate()}, ${time.getFullYear()}`;
+
+      if (date !== checkDateRef.current) setDate(checkDateRef.current);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div>
-      <h1 className="date">
-        {monthNames[date.getMonth()]} {date.getDate()}, {date.getFullYear()}
-      </h1>
+      <h1 className="date">{date}</h1>
     </div>
   );
 };
