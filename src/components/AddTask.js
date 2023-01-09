@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/add-task.css";
 
 const AddTask = ({ taskLen, createTask }) => {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -31,19 +32,41 @@ const AddTask = ({ taskLen, createTask }) => {
   };
 
   return (
-    <div>
-      <button onClick={() => setShowAddTask(true)}>plus</button>
+    <div className="add-task">
+      <button
+        className="add-btn"
+        onClick={() => setShowAddTask((prev) => !prev)}
+      ></button>
       {showAddTask && (
-        <section>
-          <form onSubmit={submitNewTask}>
-            <button onClick={() => setShowAddTask(false)}>To go back</button>
-            <input type="text" name="text" placeholder="Title" />
-            {showErrorMsg.textErr && <span>Please write a title</span>}
-            <input type="text" name="category" placeholder="Category" />
-            {showErrorMsg.categoryErr && <span>Please add a category</span>}
-            <button type="submit">Add</button>
-          </form>
-        </section>
+        <form onSubmit={submitNewTask} className="inputs">
+          <input
+            className="text-input"
+            type="text"
+            name="text"
+            placeholder="Title"
+          />
+          {showErrorMsg.textErr && <span>Please write a title</span>}
+          <select name="category" className="text-input">
+            <option value="&#128176; Finance">&#128176; Finance</option>
+            <option value="&#128187; Work">&#128187; Work</option>
+            <option value="&#128092; Shopping">&#128092; Shopping</option>
+            <option value="&#128213; Education">&#128213; Education</option>
+            <option value="&#128400; Health and wellness">
+              &#128400; Health and wellness
+            </option>
+            <option value="&#128161; General task">
+              &#128161; General task
+            </option>
+            <option value="&#127919; Personal">&#127919; Personal</option>
+            <option value="&#127822; Food">&#127822; Food</option>
+          </select>
+          {showErrorMsg.categoryErr && <span>Please add a category</span>}
+          <div className="buttons">
+            <button className="submit" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
       )}
     </div>
   );

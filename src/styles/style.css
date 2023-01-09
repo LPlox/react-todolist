@@ -13,6 +13,7 @@ main {
   max-width: 800px;
   margin: auto;
   padding: 45px 20px;
+  position: relative;
 }
 
 /* Reseting css https://piccalil.li/blog/a-modern-css-reset/ */

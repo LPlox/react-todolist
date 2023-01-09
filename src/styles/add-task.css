@@ -1,15 +1,31 @@
-.edit-task {
-  width: 100%;
-  padding-left: calc(24px + 16px);
+.add-task .add-btn {
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-color: var(--light-accent);
+  position: absolute;
+  top: 55px;
+  right: 20px;
 }
 
-.edit-task form {
+.add-task .add-btn:after {
+  content: url(../assets/svgs/Add.svg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+}
+
+.add-task form {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.edit-task .inputs .text-input {
+.add-task .inputs .text-input {
   background: #f8f8f8;
   border-radius: 4px 4px 0px 0px;
   border: none;
@@ -17,20 +33,21 @@
   color: #3a3a3d;
   padding: 9.5px 16px;
   margin-right: 5px;
+  width: 100%;
 }
 
-.edit-task .inputs .text-input:focus {
+.add-task .inputs .text-input:focus {
   border-bottom: 2px solid var(--light-accent);
   outline: none;
 }
 
-.edit-task .buttons {
+.add-task .buttons {
   display: flex;
   flex-direction: row;
   gap: 5px;
 }
 
-.edit-task button {
+.add-task button {
   padding: 8px 16px;
   background-color: var(--light-accent);
   border-radius: 4px;
@@ -43,11 +60,7 @@
   border: none;
 }
 
-.edit-task button.delete {
-  background-color: var(--light-warning);
-}
-
-.edit-task .inputs select {
+.add-task .inputs select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;

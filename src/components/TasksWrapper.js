@@ -41,13 +41,13 @@ const TasksWrapper = () => {
         <>
           <Count tasks={tasks} />
           <div className="divider" />
+          <AddTask taskLen={tasks.length} createTask={createTask} />
           <Tasks
             tasks={tasks}
             handleCheck={handleCheck}
             replaceTask={replaceTask}
             deleteTask={deleteTask}
           />
-          <AddTask taskLen={tasks.length} createTask={createTask} />
         </>
       )}
     </>
