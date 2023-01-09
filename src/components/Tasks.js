@@ -1,7 +1,7 @@
 import Task from "./Task";
 import "../styles/tasks.css";
 
-const Tasks = ({ tasks, handleCheck, activateEditTask }) => {
+const Tasks = ({ tasks, handleCheck, replaceTask, deleteTask }) => {
   return (
     <div className="tasks">
       <h2>Incomplete</h2>
@@ -13,7 +13,8 @@ const Tasks = ({ tasks, handleCheck, activateEditTask }) => {
               task={task}
               key={task.id}
               handleCheck={handleCheck}
-              activateEditTask={activateEditTask}
+              replaceTask={replaceTask}
+              deleteTask={deleteTask}
             />
           ))}
       </ul>
@@ -27,7 +28,8 @@ const Tasks = ({ tasks, handleCheck, activateEditTask }) => {
               task={task}
               key={task.id}
               handleCheck={handleCheck}
-              activateEditTask={activateEditTask}
+              replaceTask={replaceTask}
+              deleteTask={deleteTask}
             />
           ))}
       </ul>
