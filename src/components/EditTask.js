@@ -24,12 +24,6 @@ const EditTask = ({ task, replaceTask, deleteTask, closeEditField }) => {
             name="text"
             defaultValue={task.text}
           />
-          {/* <input
-            className="text-input"
-            type="text"
-            name="category"
-            defaultValue={task.category}
-          /> */}
           <select name="category" className="text-input">
             <option value="&#128176; Finance">&#128176; Finance</option>
             <option value="&#128187; Work">&#128187; Work</option>

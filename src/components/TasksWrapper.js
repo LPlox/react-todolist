@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Count from "./Count";
 import AddTask from "./AddTask";
 import Tasks from "./Tasks";
-import EditTask from "./EditTask";
 import "../styles/taskswrapper.css";
 
 const TasksWrapper = () => {
