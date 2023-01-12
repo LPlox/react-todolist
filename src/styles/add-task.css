@@ -10,7 +10,7 @@
 }
 
 .add-task .add-btn:after {
-  content: url("../assets/svgs/Add.svg");
+  content: url("../assets/svgs/add.svg");
   position: absolute;
   top: 50%;
   left: 50%;
